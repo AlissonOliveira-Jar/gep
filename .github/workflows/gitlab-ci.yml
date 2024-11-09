@@ -1,0 +1,47 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout do código do repositório
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Instala o UV
+      - name: UV
+        run: |
+          curl -LsSf https://astral.sh/uv/0.5.1/install.sh | sh
+
+      # Step 3: Instala o Python
+      - name: Python
+        run: |
+          uv python install 3.13
+
+      # Step 4: Instala o Ruff
+      - name: Install Ruff
+        run: |
+          uv add ruff
+
+      # Step 5: Executa Ruff
+      - name: Ruff
+        run: |
+          uv run ruff check .
+
+      # Step 5: Cache de dependências para otimizar a execução
+      - name: Cache UV dependencies
+        uses: actions/cache@v3
+        with:
+          path: .uv-cache
+          key: ${{ runner.os }}-uv-${{ hashFiles('uv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-uv-
