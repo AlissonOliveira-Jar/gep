@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #003049;
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+h1 {
+    color: #0046AD;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #0046AD;
+    text-align: left;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #0046AD;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input[type="email"]:focus,
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #d62828;
+}
+
+button {
+    background-color: #d62828;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #b82222;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.button-group a {
+    text-decoration: none;
+    padding: 12px 20px;
+    background-color: #0046AD;
+    color: white;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    flex: 1 1 30%;
+    max-width: 30%;
+    box-sizing: border-box;
+}
+
+.button-group a:hover {
+    background-color: #003080;
+}
+
+.message {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #0046AD;
+}
+
+.message p {
+    background-color: #f1f1f1;
+    padding: 12px;
+    border-radius: 6px;
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #bbbbbb;
+}
+
+.home-button {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.home-button a {
+    background-color: #0046AD;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.home-button a:hover {
+    background-color: #003080;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+    .button-group a {
+        flex: 1 1 100%;
+        margin-bottom: 10px;
+    }
+}
