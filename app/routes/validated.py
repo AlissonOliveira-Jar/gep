@@ -1,6 +1,8 @@
 import re
+
 from fastapi import APIRouter, HTTPException, Form
 from pydantic import BaseModel, Field, EmailStr
+
 from app.routes.register import users_db
 
 router = APIRouter()
@@ -19,7 +21,6 @@ class UserData(BaseModel):
         description="Password must be at least 8 characters long"
     )
 
-
 # Função para validar a força da senha
 def validate_password(password: str):
     if not password_regex.match(password):
@@ -28,7 +29,6 @@ def validate_password(password: str):
             detail="Password must contain at least one letter, one number, and one special character"
         )
 
-
 # Rota com validação de email e senha
 @router.post("/login")
 async def validated_login(email: str = Form(...), password: str = Form(...)):
@@ -36,7 +36,7 @@ async def validated_login(email: str = Form(...), password: str = Form(...)):
     if email not in users_db:
         raise HTTPException(status_code=404, detail="Usuário não encontrado")
 
-    # Validar a senha forte
+    # Validar a força da senha fornecida
     validate_password(password)
 
     # Verificar se a senha está correta
@@ -44,7 +44,6 @@ async def validated_login(email: str = Form(...), password: str = Form(...)):
         raise HTTPException(status_code=400, detail="Senha incorreta")
 
     return {"message": "Login bem-sucedido!"}
-
 
 # Função para tratar a saída, escapando caracteres perigosos
 def escape_output(value: str) -> str:
@@ -55,7 +54,6 @@ def escape_output(value: str) -> str:
              .replace('"', "&quot;")
              .replace("'", "&#x27;")
     )
-
 
 @router.get("/greet")
 async def greet(name: str):

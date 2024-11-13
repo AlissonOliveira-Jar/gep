@@ -15,12 +15,12 @@ app.include_router(register.router, prefix="/register", tags=["Register"])
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request, "message": None})
+    return templates.TemplateResponse(request, "index.html", {"message": None})
 
 @app.get("/validated", response_class=HTMLResponse)
 async def validated_form(request: Request):
-    return templates.TemplateResponse("validated_form.html", {"request": request, "message": None})
+    return templates.TemplateResponse(request, "validated_form.html", {"message": None})
 
 @app.get("/unvalidated", response_class=HTMLResponse)
 async def unvalidated_form(request: Request):
-    return templates.TemplateResponse("unvalidated_form.html", {"request": request, "message": None})
+    return templates.TemplateResponse(request, "unvalidated_form.html", {"message": None})

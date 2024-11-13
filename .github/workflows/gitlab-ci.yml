@@ -27,9 +27,11 @@ jobs:
         run: |
           uv python install 3.13
 
-      # Step 4: Instala o Ruff
-      - name: Install Ruff
+      # Step 4: Instala as dependencias
+      - name: Install FastAPI, Pytest and Ruff
         run: |
+          uv add fastapi[standard]
+          uv add pytest
           uv add ruff
 
       # Step 5: Executa Ruff
@@ -37,11 +39,7 @@ jobs:
         run: |
           uv run ruff check .
 
-      # Step 5: Cache de dependências para otimizar a execução
-      - name: Cache UV dependencies
-        uses: actions/cache@v3
-        with:
-          path: .uv-cache
-          key: ${{ runner.os }}-uv-${{ hashFiles('uv.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-uv-
+      # Step 6: Executa os testes com pytest 
+      - name: Run Pytest
+        run: |
+          uv run pytest
